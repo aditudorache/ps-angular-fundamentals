@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'gdn-root',
-  template: `<h1>GeoDotNet events</h1>
-    <img src="/assets/images/basic-shield.png">
+  template: `
+    <nav-bar></nav-bar>
+    <events-list></events-list>
   `,
   styles: ['']
 })
-export class GdnComponent {
+export class GdnAppComponent {
   title = 'geodotnet-events';
 }
