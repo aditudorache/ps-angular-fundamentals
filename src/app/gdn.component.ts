@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'gdn-root',
   template: `
     <nav-bar></nav-bar>
-    <events-list></events-list>
+    <router-outlet></router-outlet>
   `,
   styles: ['']
 })
