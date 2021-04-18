@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   EventsListComponent,
@@ -9,14 +10,14 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index'
 import { EventsAppComponent } from './events-app.component'
 import { NavBarComponent } from './nav/nav-bar.component'
@@ -24,6 +25,7 @@ import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalCo
 import { appRoutes } from './routes'
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
+
 
 let toastr:Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -33,7 +35,8 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -56,7 +59,7 @@ let jQuery = window['$'];
     EventService, 
     { provide: TOASTR_TOKEN, useValue: toastr}, 
     { provide: JQ_TOKEN, useValue: jQuery}, 
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,
